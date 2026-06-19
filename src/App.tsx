@@ -80,14 +80,14 @@ function App() {
       )}
 
       <h2>Top 15 barrios más caros</h2>
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={barrios} layout="vertical" margin={{ left: 120 }}>
-          <XAxis type="number" unit=" USD" />
-          <YAxis type="category" dataKey="barrio" width={110} />
-          <Tooltip formatter={(value) => `USD ${value}/m²`} />
-          <Bar dataKey="precio_mediano" fill="#6366f1" />
-        </BarChart>
-      </ResponsiveContainer>
+        <ResponsiveContainer width="100%" height={Math.max(400, barrios.length * 32)}>
+          <BarChart data={barrios} layout="vertical" margin={{ left: 20, right: 20, top: 10, bottom: 10 }} barCategoryGap="20%">
+            <XAxis type="number" unit=" USD" />
+            <YAxis type="category" dataKey="barrio" width={130} tick={{ fontSize: 13 }} />
+            <Tooltip formatter={(value) => `USD ${value}/m²`} />
+            <Bar dataKey="precio_mediano" fill="#6366f1" />
+          </BarChart>
+        </ResponsiveContainer>
     </div>
   )
 }
