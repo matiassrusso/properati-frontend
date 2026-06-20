@@ -83,8 +83,20 @@ function App() {
   const alturaGrafico = Math.max(barriosFiltrados.length * 42, 120)
 
   return (
-    <div className="app">
-      <header className="hero">
+    <>
+      <div className="ticker">
+        <span className="ticker-label">ranking</span>
+        <div className="ticker-track">
+          {[...barrios, ...barrios].map((b, index) => (
+            <span className="ticker-item" key={index}>
+              #{(index % barrios.length) + 1} {b.barrio} <strong>USD {b.precio_mediano}/m²</strong>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="app">
+        <header className="hero">
         <span className="eyebrow">Properati · Buenos Aires</span>
         <h1>Mercado inmobiliario<br />de CABA</h1>
         <p className="hero-sub">Análisis de 19.215 propiedades en venta</p>
@@ -173,7 +185,8 @@ function App() {
           </BarChart>
         </ResponsiveContainer>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
 

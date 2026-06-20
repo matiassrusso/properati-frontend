@@ -174,3 +174,64 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* TICKER */
+.ticker {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  overflow: hidden;
+  background: #FF6B4A;
+  border-bottom: 2px solid #1A1714;
+  padding: 0.6rem 0;
+}
+
+.ticker-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(26, 23, 20, 0.55);
+  padding: 0 1rem;
+  background: #FF6B4A;
+  border-right: 1px solid rgba(26, 23, 20, 0.2);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 60s linear infinite;
+  padding-left: 90px;
+}
+
+.ticker-item {
+  flex-shrink: 0;
+  padding: 0 2rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1714;
+  white-space: nowrap;
+  border-right: 1px solid rgba(26, 23, 20, 0.25);
+}
+
+.ticker-item strong {
+  font-family: 'Archivo Black', sans-serif;
+  margin-left: 0.4rem;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
