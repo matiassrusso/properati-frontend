@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { API_URL, type Barrio } from "./api"
 import Dock from "./components/Dock"
+import Footer from "./components/Footer"
 import Intro from "./pages/Intro"
 import Resumen from "./pages/Resumen"
 import TopBarrios from "./pages/TopBarrios"
@@ -41,6 +42,7 @@ function App() {
         </Routes>
       </div>
 
+      <Footer />
       <Dock />
     </BrowserRouter>
   )
