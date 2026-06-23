@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# Properati CABA & GBA — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive data visualization app built with React and TypeScript that explores the real estate market of Buenos Aires (CABA) and Greater Buenos Aires (GBA).
 
-Currently, two official plugins are available:
+**Live demo:** [properati-frontend.vercel.app](https://properati-frontend.vercel.app)  
+**Backend repo:** [github.com/matiassrusso/properatti-app](https://github.com/matiassrusso/properatti-app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** + **TypeScript** + **Vite**
+- **React Router** — client-side routing (5 pages)
+- **Recharts** — data visualizations
+- **Vercel** — deployment
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **5 fully routed pages** with bottom dock navigation
+- **Animated ticker** showing real-time neighborhood rankings
+- **Interactive bar charts** with hover tooltips
+- **Neighborhood search** with debounced API calls and zone/type breakdown
+- **Toggle** between most expensive and most affordable neighborhoods
+- **Zone × property type matrix** — full comparative table
+- Responsive design (desktop and mobile)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Pages
+
+| Route | Content |
+|---|---|
+| `/` | Landing page with key stats and site map |
+| `/resumen` | Market summary: price by zone, property type, and full comparison matrix |
+| `/barrios` | Top 15 most expensive / most affordable neighborhoods (toggleable) |
+| `/buscador` | Search any neighborhood or explore by zone |
+| `/superficies` | Surface area distribution and price by number of rooms |
+
+---
+
+## Running Locally
+
+**Requirements:** Node.js 18+, the backend API running locally or deployed
+
+```bash
+# Clone the repo
+git clone https://github.com/matiassrusso/properati-frontend.git
+cd properati-frontend
+
+# Install dependencies
+npm install --legacy-peer-deps
+
+# Start the dev server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+> By default the app points to the deployed backend on Railway. To use a local backend, update `API_URL` in `src/api.ts`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Project Structure
+
 ```
+properati-frontend/
+├── src/
+│   ├── api.ts              # API base URL and TypeScript interfaces
+│   ├── App.tsx             # Router, ticker, dock layout
+│   ├── App.css             # Global styles and design tokens
+│   ├── pages/
+│   │   ├── Intro.tsx
+│   │   ├── Resumen.tsx
+│   │   ├── TopBarrios.tsx
+│   │   ├── Buscador.tsx
+│   │   └── Superficies.tsx
+│   └── components/
+│       ├── Dock.tsx        # Bottom navigation bar
+│       └── Footer.tsx      # Contact links
+├── index.html
+└── vite.config.ts
+```
+
+---
+
+## Author
+
+**Matías Russo Lacerna**  
+Student — Data Science, Universidad de Buenos Aires (UBA)  
+[GitHub](https://github.com/matiassrusso) · [LinkedIn](https://www.linkedin.com/in/matias-russo-lacerna/) · [matiasrussolacerna@gmail.com](mailto:matiasrussolacerna@gmail.com)
